@@ -1,17 +1,15 @@
+import { TokenResponse, useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 import React from "react";
+import { AiFillTikTok } from "react-icons/ai";
+import { FaGoogle } from "react-icons/fa";
 import {
   AuthContainer,
   Card,
-  Header,
   GoogleButton,
+  Header,
   InputContainer,
-  Footer,
-  InfoBox,
 } from "./styled.components";
-import { FaCheckCircle, FaGoogle } from "react-icons/fa";
-import { AiFillTikTok } from "react-icons/ai";
-import { TokenResponse, useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
 
 const AuthScreen: React.FC = () => {
   const login = useGoogleLogin({

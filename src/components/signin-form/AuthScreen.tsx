@@ -62,7 +62,7 @@ const AuthScreen: React.FC = () => {
           />
           <small>This is the username linked to your TikTok account</small>
         </InputContainer>
-
+        {/* 
         <InfoBox>
           <FaCheckCircle />
           <span>
@@ -80,7 +80,7 @@ const AuthScreen: React.FC = () => {
             and <a href="#">Privacy Policy</a>.
           </p>
           <a href="#">Learn more about how we use your data</a>
-        </Footer>
+        </Footer> */}
       </Card>
     </AuthContainer>
   );

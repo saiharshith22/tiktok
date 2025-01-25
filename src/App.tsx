@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { createGlobalStyle } from "styled-components";
+import Dashboard from "./pages/dashboard";
 
 function App() {
   const GlobalStyle = createGlobalStyle`
@@ -16,6 +17,7 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </GoogleOAuthProvider>
   );

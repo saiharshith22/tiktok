@@ -10,8 +10,11 @@ import {
   Header,
   InputContainer,
 } from "./styled.components";
+import { useNavigate } from "react-router-dom";
 
 const AuthScreen: React.FC = () => {
+  const navigate = useNavigate();
+
   const login = useGoogleLogin({
     onSuccess: async (codeResponse: TokenResponse) => {
       try {
@@ -27,9 +30,13 @@ const AuthScreen: React.FC = () => {
         if (tokenResponse) {
           const accessToken = codeResponse?.access_token;
           if (accessToken) {
-            alert(`Login Successful! Hi ${tokenResponse?.data?.name}`);
-            console.log("tokenResponse", tokenResponse);
-            console.log("access token", accessToken);
+            navigate("/dashboard", {
+              state: {
+                message: `Hi ${tokenResponse?.data?.name}`,
+              },
+            });
+            // console.log("tokenResponse", tokenResponse);
+            // console.log("access token", accessToken);
           }
         }
       } catch (error) {

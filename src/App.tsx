@@ -1,25 +1,25 @@
-import { Route, Routes } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { createGlobalStyle } from "styled-components";
-import Dashboard from "./pages/dashboard";
+import { Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { routes } from "./routes/routes";
+import Layout from "./components/layout/Layout";
+import Loading from "./components/loading/Loading";
+import ErrorBoundary from "./components/error-boundary/ErrorBoundary";
 
 function App() {
-  const GlobalStyle = createGlobalStyle`
-  :root {
-    --header-height: 0px;
-  }
-`;
   return (
-    <GoogleOAuthProvider
-      clientId={import.meta.env.REACT_APP_GOOGLE_CLIENT_ID || ""}
-    >
-      <GlobalStyle />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </GoogleOAuthProvider>
+    <Router>
+      <Suspense fallback={<Loading />}>
+        <ErrorBoundary>
+          <Routes>
+            <Route element={<Layout />}>
+              {routes.map(({ path, element }) => (
+                <Route key={path} path={path} element={element} />
+              ))}
+            </Route>
+          </Routes>
+        </ErrorBoundary>
+      </Suspense>
+    </Router>
   );
 }
 

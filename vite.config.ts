@@ -1,37 +1,39 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react-swc";
+import compression from "vite-plugin-compression";
+import { imagetools } from "vite-imagetools";
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  envPrefix: "REACT_APP_",
-  define: {
-    "process.env": process.env,
+  plugins: [
+    react(),
+    compression({ algorithm: "brotliCompress", ext: ".br" }), // Brotli compression
+    compression({ algorithm: "gzip", ext: ".gz" }), // Gzip compression
+    imagetools(), // Image optimizations
+  ],
+  build: {
+    target: "esnext",
+    minify: "esbuild",
+    sourcemap: false, // Avoid large source maps in production
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            return id.split("node_modules/")[1].split("/")[0];
+          }
+        },
+        assetFileNames: (assetInfo) => {
+          if (/\.(woff2|woff|ttf)$/.test(assetInfo.name ?? "")) {
+            return "fonts/[name]-[hash][extname]"; // Cache fonts efficiently
+          }
+          return "assets/[name]-[hash][extname]";
+        },
+      },
+    },
   },
   server: {
-    port: 3000,
+    hmr: true,
+    headers: {
+      "Cache-Control": "max-age=31536000, immutable",
+    },
   },
 });
-
-// import { defineConfig, loadEnv } from "vite";
-// import react from "@vitejs/plugin-react-swc";
-
-// export default defineConfig(({ command, mode }) => {
-//   // Load env file based on `mode` in the current working directory.
-//   // Set the third parameter to '' to load all env regardless of the `VITE_` prefix.
-//   const env = loadEnv(mode, process.cwd(), '')
-
-//   return {
-//     plugins: [react()],
-//     // vite config
-//     define: {
-//       ...Object.keys(env).reduce((prev, key) => {
-//         const sanitizedKey = key.replace(/[^a-zA-Z0-9_]/g, "_");
-
-//         prev[`process.env.${sanitizedKey}`] = JSON.stringify(env[key]);
-
-//         return prev;
-//       }, {}),
-//     },
-//   }
-// })

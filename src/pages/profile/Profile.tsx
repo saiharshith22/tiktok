@@ -1,8 +1,12 @@
+import ProfileCard from "../../components/profile-card/ProfileCard";
 import VideoCard from "../../components/video-card/VideoCard";
+import VideoHeader from "../../components/video-card/VideoHeader";
 
 const Profile = () => {
   return (
     <div style={{ padding: "2rem" }}>
+      <ProfileCard />
+      <VideoHeader />
       <VideoCard
         title="Big Buck Bunny"
         views="1.2M"

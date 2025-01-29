@@ -17,6 +17,7 @@ import {
 } from "./styled.components";
 import { Search, Share2 } from "lucide-react";
 import IconButton from "../icon-button/IconButton";
+import { useNavigate } from "react-router-dom";
 
 const InfoCard: React.FC<{ title: string; value: string }> = ({
   title,
@@ -31,6 +32,10 @@ const InfoCard: React.FC<{ title: string; value: string }> = ({
 };
 
 const ProfileCard: React.FC = () => {
+  const navigate = useNavigate();
+  const handleDownloadData = () => {
+    navigate("/consent");
+  };
   return (
     <ProfileCardWrapper>
       <ProfileContainer>
@@ -58,6 +63,7 @@ const ProfileCard: React.FC = () => {
           icon={<Search size={16} />}
           label="Download Data"
           backgroundColor="#1E222B"
+          onClick={handleDownloadData}
           styles={{
             borderRadius: 8,
             width: "100%",

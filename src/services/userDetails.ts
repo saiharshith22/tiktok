@@ -20,6 +20,7 @@ export const useSearchUser = () => {
     },
     onError: (error) => {
       console.error("Mutation Failed!", error);
+      navigate("/profile");
     },
   });
 };

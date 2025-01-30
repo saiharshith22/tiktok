@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useUsernameStore } from "../../store/useUsernameStore";
 import {
   Container,
   Input,
@@ -7,14 +9,26 @@ import {
   Subtitle,
   Title,
 } from "./styled.components";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import { useSearchUser } from "../../services/userDetails";
 
 export default function TikTokRecovery() {
-  const navigate = useNavigate(); 
+  const { username, setUsername } = useUsernameStore();
+  const [localUsername, setLocalUsername] = useState(username);
+  const { mutate, data, isPending, error } = useSearchUser();
 
   const handleSearch = () => {
-    navigate("/profile");
+    if (localUsername.trim()) {
+      setUsername(localUsername); // Update Zustand store
+      mutate(localUsername); // Call API
+    }
   };
+
+  console.log({
+    data,
+    isPending,
+    error,
+  });
 
   return (
     <Container>
@@ -27,6 +41,8 @@ export default function TikTokRecovery() {
         <Input
           type="text"
           placeholder="Enter your TikTok username to recover videos"
+          value={localUsername}
+          onChange={(e) => setLocalUsername(e.target.value)}
         />
         <SearchButton onClick={handleSearch}>Search</SearchButton>
       </SearchContainer>

@@ -35,5 +35,17 @@ export default defineConfig({
     headers: {
       "Cache-Control": "max-age=31536000, immutable",
     },
+    proxy: {
+      "/tiktok": {
+        target: "https://api-tiktokdownloader-dev.prach.org",
+        changeOrigin: true, // To make the target server think the request is coming from itself
+        configure: (proxy) => {
+          proxy.on("proxyReq", (proxyReq, req) => {
+            const fullUrl = proxyReq.protocol + "//" + proxyReq.host + req.url;
+            console.log("Full Proxy URL:", fullUrl);
+          });
+        },
+      },
+    },
   },
 });

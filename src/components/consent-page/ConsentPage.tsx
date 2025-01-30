@@ -35,6 +35,7 @@ const ConsentPage: React.FC = () => {
     <Container>
       <HeadingContainer>
       <Title>Download Consent Confirmation</Title>
+      <span>Step 1 of 1</span>
       <Subtitle>
         Please review and accept your terms before proceeding with your TikTok
         video recovery.

@@ -10,7 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export default function TikTokRecovery() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   const handleSearch = () => {
     navigate("/profile");

@@ -2,10 +2,12 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import compression from "vite-plugin-compression";
 import { imagetools } from "vite-imagetools";
+import RemoveConsole from "vite-plugin-remove-console";
 
 export default defineConfig({
   plugins: [
     react(),
+    RemoveConsole(),
     compression({ algorithm: "brotliCompress", ext: ".br" }), // Brotli compression
     compression({ algorithm: "gzip", ext: ".gz" }), // Gzip compression
     imagetools(), // Image optimizations
@@ -39,12 +41,12 @@ export default defineConfig({
       "/tiktok": {
         target: "https://api-tiktokdownloader-dev.prach.org",
         changeOrigin: true, // To make the target server think the request is coming from itself
-        configure: (proxy) => {
-          proxy.on("proxyReq", (proxyReq, req) => {
-            const fullUrl = proxyReq.protocol + "//" + proxyReq.host + req.url;
-            console.log("Full Proxy URL:", fullUrl);
-          });
-        },
+        // configure: (proxy) => {
+        //   proxy.on("proxyReq", (proxyReq, req) => {
+        //     const fullUrl = proxyReq.protocol + "//" + proxyReq.host + req.url;
+        //     console.log("Full Proxy URL:", fullUrl);
+        //   });
+        // },
       },
     },
   },

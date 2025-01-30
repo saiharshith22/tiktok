@@ -11,14 +11,35 @@ export const Container = styled.div`
   font-family: Arial, sans-serif;
 `;
 
-export const Title = styled.h2`
+export const HeadingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+`;
+export const Title = styled.span`
   text-align: center;
-  margin-bottom: 10px;
+  font-family: Inter;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.0025em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #1f2737;
 `;
 
-export const Subtitle = styled.p`
+export const Subtitle = styled.text`
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.0015em;
   text-align: center;
-  color: #666;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #4b5363;
 `;
 
 export const Section = styled.div`

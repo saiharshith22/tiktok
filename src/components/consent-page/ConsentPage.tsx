@@ -11,6 +11,7 @@ import {
   Footer,
   BadgeContainer,
   Badge,
+  HeadingContainer,
 } from "./styled.components";
 import {
   CheckCircle,
@@ -32,11 +33,13 @@ const ConsentPage: React.FC = () => {
 
   return (
     <Container>
+      <HeadingContainer>
       <Title>Download Consent Confirmation</Title>
       <Subtitle>
         Please review and accept your terms before proceeding with your TikTok
         video recovery.
       </Subtitle>
+      </HeadingContainer>
 
       <Section>
         <Icon>

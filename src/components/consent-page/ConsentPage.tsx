@@ -1,28 +1,42 @@
-// DownloadConsent.tsx
-import React, { useState } from "react";
-import {
-  Container,
-  Title,
-  Subtitle,
-  Section,
-  Icon,
-  Text,
-  CheckboxContainer,
-  Footer,
-  BadgeContainer,
-  Badge,
-  HeadingContainer,
-} from "./styled.components";
 import {
   CheckCircle,
-  Lock,
   FileText,
   FileWarning,
+  Grid,
+  HelpCircle,
+  Lock,
   ShieldCheck,
-  XCircle,
 } from "lucide-react";
-import IconButton from "../icon-button/IconButton";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  ButtonContainer,
+  CancelButton,
+  CheckboxContainer,
+  ComplianceContainer,
+  ComplianceItem,
+  Container,
+  HeadingContainer,
+  Icon,
+  LableText,
+  Paragraph,
+  ProceedButton,
+  Section,
+  SectionContainer,
+  Strong,
+  SubText,
+  Subtitle,
+  Text,
+  Title,
+  CancelButtonText,
+  ProceedButtonText,
+  InfoContainer,
+  InfoText,
+  SupportLink,
+  FooterContainer,
+  FooterItem,
+  FooterText,
+} from "./styled.components";
 
 const ConsentPage: React.FC = () => {
   const [checked, setChecked] = useState(false);
@@ -34,66 +48,82 @@ const ConsentPage: React.FC = () => {
   return (
     <Container>
       <HeadingContainer>
-      <Title>Download Consent Confirmation</Title>
-      <span>sample text</span>
-      <Subtitle>
-        Please review and accept your terms before proceeding with your TikTok
-        video recovery.
-      </Subtitle>
+        <Title>Download Consent Confirmation</Title>
+        <Subtitle>
+          Please review and accept your terms before proceeding with your TikTok
+          video recovery.
+        </Subtitle>
       </HeadingContainer>
 
-      <Section>
-        <Icon>
-          <FileText size={20} />
-        </Icon>
-        <Text>
-          <strong>Consent Message</strong>
-          <p>
-            By proceeding, you confirm that you are the rightful owner of the
-            TikTok account and consent to the retrieval of the video content.
-            Your data will be securely processed and encrypted during recovery.
-          </p>
-        </Text>
-      </Section>
+      <SectionContainer>
+        <Section>
+          <Icon>
+            <FileText size={20} />
+          </Icon>
+          <Text>
+            <Strong>Consent Message</Strong>
+            <Paragraph>
+              By proceeding, you confirm that you are the rightful owner of the
+              TikTok account and consent to the retrieval of the video content.
+              Your data will be securely processed and encrypted during
+              recovery.
+            </Paragraph>
+          </Text>
+        </Section>
 
-      <Section>
-        <Icon>
-          <Lock size={20} />
-        </Icon>
-        <Text>
-          <strong>Data Privacy</strong>
-          <p>
-            Your data is encrypted and protected using industry-standard
-            security measures.
-          </p>
-        </Text>
-      </Section>
+        <Section>
+          <Icon>
+            <Lock size={20} />
+          </Icon>
+          <Text>
+            <Strong>Data Privacy</Strong>
+            <Paragraph>
+              Your data is encrypted and protected using industry-standard
+              security measures.
+            </Paragraph>
+          </Text>
+        </Section>
 
-      <Section>
-        <Icon>
-          <FileWarning size={20} />
-        </Icon>
-        <Text>
-          <strong>Usage Terms</strong>
-          <p>
-            Downloaded contents must comply with our terms of service and
-            applicable laws.
-          </p>
-        </Text>
-      </Section>
+        <Section>
+          <Icon>
+            <FileWarning size={20} />
+          </Icon>
+          <Text>
+            <Strong>Usage Terms</Strong>
+            <Paragraph>
+              Downloaded contents must comply with our terms of service and
+              applicable laws.
+            </Paragraph>
+          </Text>
+        </Section>
 
-      <Section>
-        <Icon>
-          <ShieldCheck size={20} />
-        </Icon>
-        <Text>
-          <strong>User Agreement</strong>
-          <p>
-            By accepting, you acknowledge our data handling practices as
-            described in our Privacy Policy.
-          </p>
-        </Text>
-      </Section>
+        <Section>
+          <Icon>
+            <ShieldCheck size={20} />
+          </Icon>
+          <Text>
+            <Strong>User Agreement</Strong>
+            <Paragraph>
+              By accepting, you acknowledge our data handling practices as
+              described in our Privacy Policy.
+            </Paragraph>
+          </Text>
+        </Section>
+      </SectionContainer>
+
+      <ComplianceContainer>
+        <ComplianceItem>
+          <CheckCircle size={18} color="green" />
+          <SubText>We do not store or share any recovered videos.</SubText>
+        </ComplianceItem>
+        <ComplianceItem>
+          <CheckCircle size={18} color="green" />
+          <SubText>
+            This process is fully compliant with GDPR, CCPA, and global data
+            privacy laws.
+          </SubText>
+        </ComplianceItem>
+      </ComplianceContainer>
 
       <CheckboxContainer>
         <input
@@ -101,42 +131,42 @@ const ConsentPage: React.FC = () => {
           checked={checked}
           onChange={() => setChecked(!checked)}
         />
-        <label>
+        <LableText>
           I have read and agree to the Privacy Policy and Terms of Service
-        </label>
+        </LableText>
       </CheckboxContainer>
 
-      <IconButton
-        icon={<CheckCircle size={18} />}
-        label="Proceed to Order Placement"
-        iconPosition="start"
-        onClick={handleOrderPlacement}
-        backgroundColor={checked ? "#2662d9" : "#ccc"}
-        color="white"
-        size="large"
-        styles={{ width: "100%", marginTop: "10px" }}
-      />
+      <ButtonContainer>
+        <ProceedButton onClick={handleOrderPlacement}>
+          <ProceedButtonText>Proceed to Order Placement</ProceedButtonText>
+        </ProceedButton>
 
-      <IconButton
-        icon={<XCircle size={18} />}
-        label="Cancel & Exit"
-        iconPosition="start"
-        onClick={() => alert("Exiting")}
-        backgroundColor="#e74c3c"
-        color="white"
-        size="large"
-        styles={{ width: "100%", marginTop: "10px" }}
-      />
+        <CancelButton>
+          <CancelButtonText>Cancel & Exit</CancelButtonText>
+        </CancelButton>
+      </ButtonContainer>
+      <InfoContainer>
+        <HelpCircle size={16} color="#4b5363" />
+        <InfoText>
+          Need more information?{" "}
+          <SupportLink href="#">Contact Support</SupportLink>
+        </InfoText>
+      </InfoContainer>
 
-      <Footer>
-        Need more information? <a href="#">Contact Support</a>
-      </Footer>
-
-      <BadgeContainer>
-        <Badge>GDPR Compliant</Badge>
-        <Badge>ISO 27001</Badge>
-        <Badge>SSL Secured</Badge>
-      </BadgeContainer>
+      <FooterContainer>
+        <FooterItem>
+          <ShieldCheck size={18} color="green" />
+          <FooterText>GDPR Compliant</FooterText>
+        </FooterItem>
+        <FooterItem>
+          <Grid size={18} color="green" />
+          <FooterText>ISO 27001</FooterText>
+        </FooterItem>
+        <FooterItem>
+          <Lock size={18} color="green" />
+          <FooterText>SSL Secured</FooterText>
+        </FooterItem>
+      </FooterContainer>
     </Container>
   );
 };

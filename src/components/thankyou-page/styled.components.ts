@@ -12,14 +12,12 @@ export const ContainerWrapper = styled.div`
 
   @media (max-width: 768px) {
     padding: 25px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 40px;
   }
 
   @media (max-width: 425px) {
     padding: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin:20px;
   }
 `;
 

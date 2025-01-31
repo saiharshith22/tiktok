@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MainContent = styled.main`
-  height: calc(100vh - var(--header-height));
+  height: calc(100dvh - var(--header-height));
   background: linear-gradient(90deg, #f3ecfd 0%, #fef6f9 100%);
   display: flex;
   justify-content: center;

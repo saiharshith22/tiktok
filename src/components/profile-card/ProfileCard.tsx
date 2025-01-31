@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import ProfileImage from "../../assets/images/profile-image.jpeg";
+// import ProfileImage from "../../assets/images/profile-image.jpeg";
 import {
   ProfileContainer,
   ProfileDetails,
@@ -18,6 +18,8 @@ import {
 import { Search, Share2 } from "lucide-react";
 import IconButton from "../icon-button/IconButton";
 import { useNavigate } from "react-router-dom";
+import { useUsernameStore } from "../../store/useUsernameStore";
+import { useNumberFormatter } from "../../utils/utils";
 
 const InfoCard: React.FC<{ title: string; value: string }> = ({
   title,
@@ -33,29 +35,45 @@ const InfoCard: React.FC<{ title: string; value: string }> = ({
 
 const ProfileCard: React.FC = () => {
   const navigate = useNavigate();
+  const {
+    userProfileData: {
+      username,
+      nickname,
+      avatarThumb,
+      followerCount,
+      followingCount,
+      heartCount,
+      videoCount,
+      bio,
+    },
+  } = useUsernameStore();
   const handleDownloadData = () => {
     navigate("/consent");
   };
+
   return (
     <ProfileCardWrapper>
       <ProfileContainer>
         <ProfileDetails>
-          <ProfileImageWrapper src={ProfileImage} alt="Profile" />
-          <ProfileUsername>@UserName</ProfileUsername>
-          <ProfileName>RealName</ProfileName>
+          <ProfileImageWrapper src={avatarThumb} alt="Profile" />
+          <ProfileUsername>@{username}</ProfileUsername>
+          <ProfileName>{nickname}</ProfileName>
         </ProfileDetails>
 
         <StatsContainer>
           <InfoCardContainer>
-            <InfoCard title="Followers" value="1.2M" />
-            <InfoCard title="Following" value="100" />
-            <InfoCard title="Likes" value="10M" />
-            <InfoCard title="Videos" value="100" />
+            <InfoCard
+              title="Followers"
+              value={useNumberFormatter(followerCount)}
+            />
+            <InfoCard
+              title="Following"
+              value={useNumberFormatter(followingCount)}
+            />
+            <InfoCard title="Likes" value={useNumberFormatter(heartCount)} />
+            <InfoCard title="Videos" value={useNumberFormatter(videoCount)} />
           </InfoCardContainer>
-          <Bio>
-            Professional dancer sharing tips and choreography 💃 | Dance
-            tutorials every week
-          </Bio>
+          {bio ? <Bio>{bio}</Bio> : <Bio>No bio available</Bio>}
         </StatsContainer>
       </ProfileContainer>
       <ButtonGroup>

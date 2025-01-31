@@ -2,6 +2,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useUsernameStore } from "../store/useUsernameStore";
 
 const searchUser = async (username?: string) => {
   console.log("username", username);
@@ -10,12 +11,14 @@ const searchUser = async (username?: string) => {
 };
 
 export const useSearchUser = () => {
+  const { setUserProfileData } = useUsernameStore();
   const navigate = useNavigate();
   return useMutation({
     mutationFn: searchUser,
     onSuccess: (data) => {
       console.log("Mutation Successful!", data);
-      // setUserProfileData(data);
+      const parsedBody = JSON.parse(data.body);
+      setUserProfileData(parsedBody.data);
       navigate("/profile");
     },
     onError: (error) => {

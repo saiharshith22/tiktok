@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const NavHeader = styled.header`
   position: fixed;
+  z-index: 10;
   width: 100%;
   background-color: #ffffff;
   gap: 0px;

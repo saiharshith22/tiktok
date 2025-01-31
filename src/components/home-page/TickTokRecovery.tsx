@@ -11,6 +11,7 @@ import {
 } from "./styled.components";
 // import { useNavigate } from "react-router-dom";
 import { useSearchUser } from "../../services/userDetails";
+import Loading from "../loading/Loading";
 
 export default function TikTokRecovery() {
   const { username, setUsername } = useUsernameStore();
@@ -31,24 +32,30 @@ export default function TikTokRecovery() {
   });
 
   return (
-    <Container>
-      <Title>Recover Your TikTok Videos</Title>
-      <Subtitle>
-        Lost your favourite TikTok videos? We can help you recover them quickly
-        and securely.
-      </Subtitle>
-      <SearchContainer>
-        <Input
-          type="text"
-          placeholder="Enter your TikTok username to recover videos"
-          value={localUsername}
-          onChange={(e) => setLocalUsername(e.target.value)}
-        />
-        <SearchButton onClick={handleSearch}>Search</SearchButton>
-      </SearchContainer>
-      <SecurityNotice>
-        This service is secure and compliant with all applicable regulations
-      </SecurityNotice>
-    </Container>
+    <>
+      {isPending ? (
+        <Loading />
+      ) : (
+        <Container>
+          <Title>Recover Your TikTok Videos</Title>
+          <Subtitle>
+            Lost your favourite TikTok videos? We can help you recover them
+            quickly and securely.
+          </Subtitle>
+          <SearchContainer>
+            <Input
+              type="text"
+              placeholder="Enter your TikTok username to recover videos"
+              value={localUsername}
+              onChange={(e) => setLocalUsername(e.target.value)}
+            />
+            <SearchButton onClick={handleSearch}>Search</SearchButton>
+          </SearchContainer>
+          <SecurityNotice>
+            This service is secure and compliant with all applicable regulations
+          </SecurityNotice>
+        </Container>
+      )}
+    </>
   );
 }

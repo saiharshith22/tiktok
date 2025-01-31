@@ -5,14 +5,18 @@ import styled from "styled-components";
 import { Play, Pause } from "lucide-react";
 
 const Card = styled.div`
-  background: white;
-  border-radius: 12px;
+  background: #fcfcfd;
+  border-radius: 10px;
   overflow: hidden;
   width: 100%;
   max-width: 320px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-
+  width: 100%;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   &:hover {
     transform: translateY(-2px);
   }
@@ -23,12 +27,14 @@ const VideoContainer = styled.div`
   aspect-ratio: 16/9;
   background: #000;
   cursor: pointer;
+  border-radius: 10px 10px 0px 0px;
 `;
 
 const Video = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 10px 10px 0px 0px;
 `;
 
 const PlayButton = styled.button<{ isPlaying: boolean }>`
@@ -70,6 +76,7 @@ const Title = styled.h3`
 
 const MetaData = styled.div`
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
   margin-top: 0.5rem;
   color: #6b7280;
@@ -77,11 +84,11 @@ const MetaData = styled.div`
 `;
 
 interface VideoCardProps {
-  title: string;
-  views: string;
-  timeAgo: string;
-  videoUrl: string;
-  thumbnailUrl: string;
+  readonly title: string;
+  readonly views: string;
+  readonly timeAgo: string;
+  readonly videoUrl: string;
+  // readonly thumbnailUrl: string;
 }
 
 export default function VideoCard({
@@ -89,8 +96,8 @@ export default function VideoCard({
   views = "1.2M",
   timeAgo = "2 months ago",
   videoUrl = "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-  thumbnailUrl = "https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
-}: VideoCardProps) {
+}: // thumbnailUrl = "https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+VideoCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -147,7 +154,7 @@ export default function VideoCard({
       <VideoContainer onClick={togglePlay}>
         <Video
           ref={videoRef}
-          poster={thumbnailUrl}
+          // poster={thumbnailUrl}
           onEnded={handleVideoEnd}
           onError={handleVideoError}
           playsInline

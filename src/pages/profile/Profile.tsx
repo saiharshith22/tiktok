@@ -11,16 +11,16 @@ const Profile = () => {
   const sampleVideos = [
     "https://videos.pexels.com/video-files/6853337/6853337-uhd_1440_2732_25fps.mp4",
     "https://videos.pexels.com/video-files/8113104/8113104-hd_1080_1920_30fps.mp4",
+    "https://videos.pexels.com/video-files/4727536/4727536-uhd_1440_2560_25fps.mp4",
     "https://videos.pexels.com/video-files/6193112/6193112-hd_1080_1920_30fps.mp4",
     "https://videos.pexels.com/video-files/6003997/6003997-uhd_1440_2560_30fps.mp4",
     "https://videos.pexels.com/video-files/5198956/5198956-uhd_1440_2732_25fps.mp4",
-    "https://videos.pexels.com/video-files/30434099/13042476_1080_1920_30fps.mp4",
     "https://videos.pexels.com/video-files/6853337/6853337-uhd_1440_2732_25fps.mp4",
     "https://videos.pexels.com/video-files/8113104/8113104-hd_1080_1920_30fps.mp4",
     "https://videos.pexels.com/video-files/6193112/6193112-hd_1080_1920_30fps.mp4",
     "https://videos.pexels.com/video-files/6003997/6003997-uhd_1440_2560_30fps.mp4",
     "https://videos.pexels.com/video-files/5198956/5198956-uhd_1440_2732_25fps.mp4",
-    "https://videos.pexels.com/video-files/30434099/13042476_1080_1920_30fps.mp4",
+    "https://videos.pexels.com/video-files/4727536/4727536-uhd_1440_2560_25fps.mp4",
   ];
   return (
     <div style={{ padding: "2rem" }}>

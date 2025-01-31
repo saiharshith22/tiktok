@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-// import ProfileImage from "../../assets/images/profile-image.jpeg";
+import ProfileImage from "../../assets/images/profile-image.jpeg";
 import {
   ProfileContainer,
   ProfileDetails,
@@ -55,23 +55,32 @@ const ProfileCard: React.FC = () => {
     <ProfileCardWrapper>
       <ProfileContainer>
         <ProfileDetails>
-          <ProfileImageWrapper src={avatarThumb} alt="Profile" />
-          <ProfileUsername>@{username}</ProfileUsername>
-          <ProfileName>{nickname}</ProfileName>
+          <ProfileImageWrapper
+            src={avatarThumb ?? ProfileImage}
+            alt="Profile"
+          />
+          <ProfileUsername>@{username ?? "UserName"}</ProfileUsername>
+          <ProfileName>{nickname ?? "NickName"}</ProfileName>
         </ProfileDetails>
 
         <StatsContainer>
           <InfoCardContainer>
             <InfoCard
               title="Followers"
-              value={useNumberFormatter(followerCount)}
+              value={useNumberFormatter(followerCount) ?? 0}
             />
             <InfoCard
               title="Following"
-              value={useNumberFormatter(followingCount)}
+              value={useNumberFormatter(followingCount) ?? 0}
             />
-            <InfoCard title="Likes" value={useNumberFormatter(heartCount)} />
-            <InfoCard title="Videos" value={useNumberFormatter(videoCount)} />
+            <InfoCard
+              title="Likes"
+              value={useNumberFormatter(heartCount) ?? 0}
+            />
+            <InfoCard
+              title="Videos"
+              value={useNumberFormatter(videoCount) ?? 0}
+            />
           </InfoCardContainer>
           {bio ? <Bio>{bio}</Bio> : <Bio>No bio available</Bio>}
         </StatsContainer>

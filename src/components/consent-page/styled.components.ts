@@ -11,12 +11,12 @@ export const Container = styled.div`
 
   @media (max-width: 768px) {
     padding: 20px;
-    margin: 40px auto;
+    margin: 40px;
   }
 
   @media (max-width: 480px) {
     padding: 10px;
-    margin: 20px auto;
+    margin: 20px;
   }
 `;
 
@@ -384,7 +384,7 @@ export const CancelButton = styled.button`
 `;
 
 export const CancelButtonText = styled.span`
-  color:  #4b5363;
+  color: #4b5363;
   text-align: center;
   font-family: Inter;
   font-size: 16px;
@@ -427,7 +427,7 @@ export const InfoContainer = styled.div`
 `;
 
 export const InfoText = styled.span`
-  color:  #4b5363;
+  color: #4b5363;
   font-family: Inter;
   font-size: 14px;
   font-style: normal;

@@ -42,7 +42,7 @@ const ConsentPage: React.FC = () => {
   const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
   const handleOrderPlacement = () => {
-    navigate("/thankyou");
+    navigate("/pricing");
   };
 
   return (

@@ -7,9 +7,10 @@ export default function Layout() {
   const MainContent = styled.main`
     padding-top: var(--header-height);
   `;
+
   return (
     <div>
-      <Header />
+      <Header /> {/* Pass signOut to Header */}
       <MainContent>
         <Outlet />
       </MainContent>

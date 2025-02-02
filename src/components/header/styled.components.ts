@@ -8,7 +8,8 @@ export const NavHeader = styled.header`
   gap: 0px;
   border: 1px solid #d1d5dc;
   display: flex;
-  justify: space-between;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px 20px;
   @media (min-width: 768px) {
     padding: 30px 40px;
@@ -27,4 +28,33 @@ export const LogoText = styled.div`
   font-size: 22px;
   font-weight: 700;
   line-height: 20px;
+`;
+
+export const StyledButton = styled.button`
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.014px;
+  border-radius: 8px;
+  background: #e9eaed;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #d1d5dc;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
 `;

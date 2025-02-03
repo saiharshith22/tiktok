@@ -15,10 +15,10 @@ export const useSearchUser = () => {
   const navigate = useNavigate();
   return useMutation({
     mutationFn: searchUser,
-    onSuccess: (data) => {
-      console.log("Mutation Successful!", data);
-      const parsedBody = JSON.parse(data.body);
-      setUserProfileData(parsedBody.data);
+    onSuccess: (response) => {
+      console.log("Mutation Successful!", response);
+      // const parsedBody = JSON.parse(data.body);
+      setUserProfileData(response.body.data);
       navigate("/profile");
     },
     onError: (error) => {

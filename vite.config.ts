@@ -37,6 +37,7 @@ export default defineConfig({
     headers: {
       "Cache-Control": "max-age=31536000, immutable",
     },
+    port: 3000,
     proxy: {
       "/tiktok": {
         target: "https://api-tiktokdownloader-dev.prach.org",

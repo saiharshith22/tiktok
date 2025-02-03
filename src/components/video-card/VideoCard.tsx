@@ -3,8 +3,11 @@
 import { useState, useRef, useCallback } from "react";
 import styled from "styled-components";
 import { Play, Pause } from "lucide-react";
+import CustomCheckbox from "./CheckboxWrapper";
+import { useUsernameStore } from "../../store/useUsernameStore";
 
 const Card = styled.div`
+  position: relative;
   background: #fcfcfd;
   border-radius: 10px;
   overflow: hidden;
@@ -88,6 +91,7 @@ interface VideoCardProps {
   readonly views: string;
   readonly timeAgo: string;
   readonly videoUrl: string;
+  readonly toggleVideos: boolean;
   // readonly thumbnailUrl: string;
 }
 
@@ -96,6 +100,7 @@ export default function VideoCard({
   views = "1.2M",
   timeAgo = "2 months ago",
   videoUrl = "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+  toggleVideos = false,
 }: // thumbnailUrl = "https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
 VideoCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -149,8 +154,19 @@ VideoCardProps) {
     []
   );
 
+  const { setSelectedVideos, selectedVideos } = useUsernameStore();
+
+  const handleSelect = (videoUrl: string) => {
+    setSelectedVideos(videoUrl);
+  };
+
   return (
-    <Card>
+    <Card onClick={() => handleSelect(videoUrl)}>
+      <CustomCheckbox
+        videoUrl={videoUrl}
+        selectedCards={selectedVideos}
+        toggleVideos={toggleVideos}
+      />
       <VideoContainer onClick={togglePlay}>
         <Video
           ref={videoRef}

@@ -20,6 +20,7 @@ export const useFetchTierDetails = () => {
     },
     onError: (error) => {
       console.error("Mutation Failed!", error);
+      navigate("/pricing");
     },
   });
 };

@@ -1,5 +1,4 @@
-// OrderConfirmation.tsx
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import CheckIcon from "../../assets/images/Frame.svg";
 import ShieldCheckIcon from "../../assets/images/ShieldCheckIcon.svg";
 import {
@@ -19,13 +18,13 @@ import {
   Subtitle,
   Title,
 } from "./styled.components";
-import { useNavigate } from "react-router-dom";
 
 const ThankyouPage: React.FC = () => {
   const navigate = useNavigate();
   const handleNavigateToDashboard = () => {
     navigate("/");
   };
+
   return (
     <ContainerWrapper>
       <Container>

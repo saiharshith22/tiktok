@@ -490,8 +490,8 @@ export const Card = styled.div<{ bgColor?: string; shadow?: string }>`
   padding: 24px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background: ${(props) => props.bgColor || "#fff"};
-  box-shadow: ${(props) => props.shadow || "0 4px 8px rgba(0, 0, 0, 0.1)"};
+  background: ${(props) => props.bgColor ?? "#fff"};
+  box-shadow: ${(props) => props.shadow ?? "0 4px 8px rgba(0, 0, 0, 0.1)"};
   text-align: center;
   width: 100%;
   max-width: 180px;
@@ -499,6 +499,11 @@ export const Card = styled.div<{ bgColor?: string; shadow?: string }>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
 
   @media (min-width: 768px) {
     width: 180px;

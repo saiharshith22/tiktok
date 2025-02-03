@@ -1,4 +1,5 @@
 import { Check, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import ApplePayCard from "../../assets/images/ApplePayCard.svg";
 import RewardIcon from "../../assets/images/GiftIcon.svg";
 import Gpay from "../../assets/images/Gpay.svg";
@@ -8,6 +9,7 @@ import PaypalCard from "../../assets/images/PayPalCard.svg";
 import PremiumIcon from "../../assets/images/Premium.svg";
 import ShieldCheckIcon from "../../assets/images/ShieldCheckIcon.svg";
 import VisaCard from "../../assets/images/VisaIcon.svg";
+import { TierDetails, useTierStore } from "../../store/useTierDetailsStore";
 import {
   Banner,
   BenefitsGrid,
@@ -40,11 +42,10 @@ import {
   Title,
   VideoCount,
 } from "./styled.components";
-import { useNavigate } from "react-router-dom";
-import { TierDetails, useTierStore } from "../../store/useTierDetailsStore";
 
 const PricingPage = () => {
   const { tiers, setSelectedTier } = useTierStore();
+
   const navigate = useNavigate();
   const handlePlaceOrder = (tier: TierDetails) => {
     setSelectedTier(tier);

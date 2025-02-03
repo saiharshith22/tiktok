@@ -43,7 +43,7 @@ const Profile = () => {
       <ProfileCard />
       <VideoHeader />
       <VideoGrid>
-        {videos.map((video, i) => (
+        {videos?.map((video, i) => (
           <VideoCard
             key={i}
             title="Big Buck Bunny"

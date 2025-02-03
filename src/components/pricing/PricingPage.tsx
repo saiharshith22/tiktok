@@ -76,10 +76,10 @@ const PricingPage = () => {
 
       <PricingContainer>
         <PricingCard>
-          <PlanName>{tiers[0].description}</PlanName>
+          <PlanName>{tiers[0]?.description ?? "Basic Plan"}</PlanName>
           <VideoCount>100 videos</VideoCount>
           <Price>
-            {tiers[0].price}
+            {tiers[0]?.price ?? "100"}
             <span>/video</span>
           </Price>
           <RegularPrice>Regular $0.15</RegularPrice>
@@ -104,10 +104,10 @@ const PricingPage = () => {
 
         <PricingCard featured>
           <PopularBadge>Most Popular</PopularBadge>
-          <PlanName>{tiers[1].description}</PlanName>
+          <PlanName>{tiers[1]?.description ?? "Standard Plan"}</PlanName>
           <VideoCount>500 videos</VideoCount>
           <Price>
-            {tiers[1].price} <span>/video</span>
+            {tiers[1]?.price ?? "200"} <span>/video</span>
           </Price>
           <RegularPrice>Regular $0.15</RegularPrice>
           <FeatureList>
@@ -136,10 +136,10 @@ const PricingPage = () => {
         </PricingCard>
 
         <PricingCard>
-          <PlanName>{tiers[2].description}</PlanName>
+          <PlanName>{tiers[2]?.description ?? "Premium Plan"}</PlanName>
           <VideoCount>Unlimited</VideoCount>
           <Price>
-            {tiers[2].price} <span>/video</span>
+            {tiers[2]?.price ?? "300"} <span>/video</span>
           </Price>
           <RegularPrice>Regular $0.17</RegularPrice>
           <FeatureList>

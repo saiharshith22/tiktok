@@ -5,7 +5,7 @@ import CreditCard from "../../assets/images/Creditcard.svg";
 import DebitCard from "../../assets/images/DebitCard.svg";
 import GooglePay from "../../assets/images/Gpay.svg";
 import SslEncryptedIcon from "../../assets/images/Lock 1.svg";
-import MoneyGuranteeIcon from "../../assets/images/MoneyGuranteeIcon.svg";
+import MoneyGuranteeIcon from "../../assets/images/moneyGuranteeIcon.svg";
 import PhonePay from "../../assets/images/PhonePay.svg";
 import ShieldCheckIcon from "../../assets/images/ShieldCheckIcon.svg";
 import OrganizatinImg from "../../assets/images/image 1.svg";

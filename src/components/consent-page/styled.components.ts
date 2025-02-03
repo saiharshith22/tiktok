@@ -305,7 +305,7 @@ export const SubText = styled.span`
   }
 `;
 
-export const LableText = styled.span`
+export const LableText = styled.label`
   font-family: Inter;
   font-size: 14px;
   font-weight: 400;
@@ -353,7 +353,15 @@ export const ProceedButton = styled.button`
   justify-content: center;
   align-items: center;
   margin-bottom: 16px;
-
+  cursor: pointer;
+  &:disabled {
+    background: #eeeff1;
+    cursor: default;
+    border: none;
+    > span {
+      color: #000000;
+    }
+  }
   @media (max-width: 768px) {
     padding: 14px;
     margin-bottom: 14px;
@@ -368,12 +376,13 @@ export const ProceedButton = styled.button`
 export const CancelButton = styled.button`
   border-radius: 8px;
   border: 1px solid #d1d5dc;
+  background: #ffffff;
   display: flex;
   width: 100%;
   padding: 16px;
   justify-content: center;
   align-items: center;
-
+  cursor: pointer;
   @media (max-width: 768px) {
     padding: 14px;
   }

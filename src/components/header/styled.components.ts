@@ -4,13 +4,14 @@ export const NavHeader = styled.header`
   position: fixed;
   z-index: 10;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #f3f4f7;
   gap: 0px;
   border: 1px solid #d1d5dc;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   @media (min-width: 768px) {
     padding: 30px 40px;
   }

@@ -4,7 +4,7 @@ import styled from "styled-components";
 type ButtonSize = "small" | "medium" | "large";
 
 interface IconButtonProps {
-  icon: string | React.ReactNode;
+  icon?: string | React.ReactNode;
   label: string;
   iconPosition?: "start" | "end";
   onClick?: () => void;

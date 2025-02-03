@@ -25,6 +25,12 @@ export default function TikTokRecovery() {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   console.log({
     data,
     isPending,
@@ -48,6 +54,7 @@ export default function TikTokRecovery() {
               placeholder="Enter your TikTok username to recover videos"
               value={localUsername}
               onChange={(e) => setLocalUsername(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
             <SearchButton onClick={handleSearch}>Search</SearchButton>
           </SearchContainer>

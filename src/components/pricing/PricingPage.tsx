@@ -41,10 +41,13 @@ import {
   VideoCount,
 } from "./styled.components";
 import { useNavigate } from "react-router-dom";
+import { TierDetails, useTierStore } from "../../store/useTierDetailsStore";
 
 const PricingPage = () => {
+  const { tiers, setSelectedTier } = useTierStore();
   const navigate = useNavigate();
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = (tier: TierDetails) => {
+    setSelectedTier(tier);
     navigate("/orderplacement");
   };
   return (
@@ -73,10 +76,11 @@ const PricingPage = () => {
 
       <PricingContainer>
         <PricingCard>
-          <PlanName>Basic Plan</PlanName>
+          <PlanName>{tiers[0].description}</PlanName>
           <VideoCount>100 videos</VideoCount>
           <Price>
-            $0.10 <span>/video</span>
+            {tiers[0].price}
+            <span>/video</span>
           </Price>
           <RegularPrice>Regular $0.15</RegularPrice>
           <FeatureList>
@@ -93,15 +97,17 @@ const PricingPage = () => {
               <Check size={16} color="#10B981" /> Standard Quality
             </Feature>
           </FeatureList>
-          <Button onClick={handlePlaceOrder}>Choose Plan</Button>
+          <Button onClick={() => handlePlaceOrder(tiers[0])}>
+            Choose Plan
+          </Button>
         </PricingCard>
 
         <PricingCard featured>
           <PopularBadge>Most Popular</PopularBadge>
-          <PlanName>Standard Plan</PlanName>
+          <PlanName>{tiers[1].description}</PlanName>
           <VideoCount>500 videos</VideoCount>
           <Price>
-            $0.13 <span>/video</span>
+            {tiers[1].price} <span>/video</span>
           </Price>
           <RegularPrice>Regular $0.15</RegularPrice>
           <FeatureList>
@@ -124,16 +130,16 @@ const PricingPage = () => {
               <Check size={16} color="#ffffff" /> Batch Processing
             </Feature>
           </FeatureList>
-          <Button featured onClick={handlePlaceOrder}>
+          <Button featured onClick={() => handlePlaceOrder(tiers[1])}>
             Choose Plan
           </Button>
         </PricingCard>
 
         <PricingCard>
-          <PlanName>Premium Plan</PlanName>
+          <PlanName>{tiers[2].description}</PlanName>
           <VideoCount>Unlimited</VideoCount>
           <Price>
-            $0.15 <span>/video</span>
+            {tiers[2].price} <span>/video</span>
           </Price>
           <RegularPrice>Regular $0.17</RegularPrice>
           <FeatureList>
@@ -156,7 +162,9 @@ const PricingPage = () => {
               <Check size={16} color="#10B981" /> Priority recovery
             </Feature>
           </FeatureList>
-          <Button onClick={handlePlaceOrder}>Choose Plan</Button>
+          <Button onClick={() => handlePlaceOrder(tiers[2])}>
+            Choose Plan
+          </Button>
         </PricingCard>
       </PricingContainer>
 

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import ApplePay from "../../assets/images/ApplePay.svg";
+import ApplePay from "../../assets/images/Applepay.svg";
 import CheckIcon from "../../assets/images/CheckIcon.svg";
 import CreditCard from "../../assets/images/Creditcard.svg";
 import DebitCard from "../../assets/images/DebitCard.svg";

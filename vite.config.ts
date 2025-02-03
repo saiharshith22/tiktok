@@ -48,6 +48,10 @@ export default defineConfig({
         //   });
         // },
       },
+      "/v2": {
+        target: "https://api-tiktokdownloader-dev.prach.org",
+        changeOrigin: true,
+      },
     },
   },
 });

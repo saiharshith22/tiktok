@@ -8,41 +8,42 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useFetchTierDetails } from "../../services/useTierDetails";
 import {
   ButtonContainer,
   CancelButton,
+  CancelButtonText,
   CheckboxContainer,
   ComplianceContainer,
   ComplianceItem,
   Container,
+  FooterContainer,
+  FooterItem,
+  FooterText,
   HeadingContainer,
   Icon,
+  InfoContainer,
+  InfoText,
   LableText,
   Paragraph,
   ProceedButton,
+  ProceedButtonText,
   Section,
   SectionContainer,
   Strong,
   SubText,
   Subtitle,
+  SupportLink,
   Text,
   Title,
-  CancelButtonText,
-  ProceedButtonText,
-  InfoContainer,
-  InfoText,
-  SupportLink,
-  FooterContainer,
-  FooterItem,
-  FooterText,
 } from "./styled.components";
 
 const ConsentPage: React.FC = () => {
   const [checked, setChecked] = useState(false);
-  const navigate = useNavigate();
+  const { mutate } = useFetchTierDetails();
+
   const handleOrderPlacement = () => {
-    navigate("/thankyou");
+    mutate();
   };
 
   return (

@@ -27,3 +27,24 @@ export const useTierStore = create<TierStoreState>()(
     setSelectedTier: (data) => set({ selectedTier: data }),
   }))
 );
+export const getVideoCount = (tierId: string) => {
+  const videoCounts: Record<string, string> = {
+    tier1: "100 videos",
+    tier2: "500 videos",
+    tier3: "Unlimited",
+  };
+  return videoCounts[tierId] || "Unknown";
+};
+
+export const getRemainingVideos = (tierId: string, selected: number) => {
+  const totalVideos: Record<string, number> = {
+    tier1: 100,
+    tier2: 500,
+    tier3: Infinity, // Unlimited case
+  };
+
+  const maxVideos = totalVideos[tierId] || 0;
+  return maxVideos === Infinity
+    ? "Unlimited"
+    : Math.max(maxVideos - selected, 0);
+};

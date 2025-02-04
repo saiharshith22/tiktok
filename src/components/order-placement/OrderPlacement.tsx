@@ -4,12 +4,18 @@ import CheckIcon from "../../assets/images/CheckIcon.svg";
 import CreditCard from "../../assets/images/Creditcard.svg";
 import DebitCard from "../../assets/images/DebitCard.svg";
 import GooglePay from "../../assets/images/Gpay.svg";
+import OrganizatinImg from "../../assets/images/image 1.svg";
 import SslEncryptedIcon from "../../assets/images/Lock 1.svg";
 import MoneyGuranteeIcon from "../../assets/images/moneyGuranteeIcon.svg";
+import Paypal from "../../assets/images/paypalIcon.svg";
 import PhonePay from "../../assets/images/PhonePay.svg";
 import ShieldCheckIcon from "../../assets/images/ShieldCheckIcon.svg";
-import OrganizatinImg from "../../assets/images/image 1.svg";
-import Paypal from "../../assets/images/paypalIcon.svg";
+import {
+  getRemainingVideos,
+  getVideoCount,
+  useTierStore,
+} from "../../store/useTierDetailsStore";
+import { useUsernameStore } from "../../store/useUsernameStore";
 import {
   BasicDetails,
   Button,
@@ -67,10 +73,13 @@ import {
   VideoStats,
 } from "./styled.components";
 const OrderPlacement = () => {
+  const { selectedTier } = useTierStore();
+  const { noOfVideosSelected } = useUsernameStore();
   const navigate = useNavigate();
   const handleNavigateThankyou = () => {
     navigate("/thankyou");
   };
+
   return (
     <Container>
       <TitleContainer>
@@ -82,8 +91,12 @@ const OrderPlacement = () => {
           <Card>
             <BasicDetails>
               <PlanTitle>
-                Basic Plan
-                <VideoCount>100 videos</VideoCount>
+                {selectedTier?.description}
+                <VideoCount>
+                  <VideoCount>
+                    {selectedTier?.id ? getVideoCount(selectedTier.id) : 0}
+                  </VideoCount>
+                </VideoCount>
               </PlanTitle>
               <ProgressBar>
                 <Progress />
@@ -92,11 +105,19 @@ const OrderPlacement = () => {
                 <VideoStats>
                   <VideoDetails>
                     <StatLabel>Videos Selected</StatLabel>
-                    <StatNumber>10</StatNumber>
+                    <StatNumber>{noOfVideosSelected}</StatNumber>
                   </VideoDetails>
                   <VideoDetails>
                     <StatLabel>Remaining videos</StatLabel>
-                    <StatNumber>90</StatNumber>
+                    <StatNumber>
+                      {" "}
+                      {selectedTier?.id
+                        ? getRemainingVideos(
+                            selectedTier.id,
+                            noOfVideosSelected
+                          )
+                        : "0"}
+                    </StatNumber>
                   </VideoDetails>
                 </VideoStats>
               </ProgressContainer>
@@ -104,8 +125,15 @@ const OrderPlacement = () => {
 
             <PricingDetails>
               <PriceRow>
-                <PriceRowHeading>Regular price (10 x $0.10)</PriceRowHeading>
-                <PriceRowValue>$1.00</PriceRowValue>
+                <PriceRowHeading>
+                  Regular price ({noOfVideosSelected} x {selectedTier?.price})
+                </PriceRowHeading>
+                <PriceRowValue>
+                  $
+                  {selectedTier?.price
+                    ? (noOfVideosSelected * selectedTier.price).toFixed(2)
+                    : "0.00"}
+                </PriceRowValue>
               </PriceRow>
               <Discount>
                 <DiscountLabel>30% Early Bird Discount</DiscountLabel>

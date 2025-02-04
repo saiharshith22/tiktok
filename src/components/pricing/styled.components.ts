@@ -331,30 +331,29 @@ export const Price = styled.div`
   line-height: 30px;
   margin-bottom: 0.5rem;
 
-  span {
-    color: #4b5363;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 30px;
-    letter-spacing: 0.024px;
-
-    @media (max-width: 768px) {
-      font-size: 14px;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 12px;
-    }
-  }
-
   @media (max-width: 768px) {
     font-size: 28px;
   }
 
   @media (max-width: 480px) {
     font-size: 24px;
+  }
+`;
+export const PriceText = styled.span`
+  color: #4b5363;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.024px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
   }
 `;
 

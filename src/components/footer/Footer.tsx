@@ -12,6 +12,9 @@ import {
   SocialLinks,
   TikTokIcon,
 } from "./styled.components";
+import TwitterIcon from "../../assets/images/twitter.svg";
+import InstagramIcon from "../../assets/images/Instagram.svg";
+import TiktokIcon from "../../assets/images/Tiktok.svg";
 
 export default function Footer() {
   return (
@@ -42,21 +45,21 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span>T</span>
+              <img src={TwitterIcon} alt="TwitterIcon" />
             </SocialIcon>
             <SocialIcon
-              href="https://instagram.com"
+              href={InstagramIcon}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span>IG</span>
+              <img src={InstagramIcon} alt="InstagramIcon" />
             </SocialIcon>
             <SocialIcon
               href="https://tiktok.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <TikTokIcon />
+              <img src={TiktokIcon} alt="TiktonIcon" />
             </SocialIcon>
           </SocialLinks>
         </FooterSection>

@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { useTierStore } from "../store/useTierDetailsStore";
 
 const fetchTierDetails = async () => {
-  const response = await axios.get("/v2/tiers");
+  const response = await axios.get(`${import.meta.env.VITE_DOMAIN}/v1/tiers`, {
+    headers: {
+      "x-api-key": `${import.meta.env.VITE_X_API_KEY}`,
+    },
+  });
   return response.data;
 };
 

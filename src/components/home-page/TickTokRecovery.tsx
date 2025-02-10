@@ -3,14 +3,15 @@ import { useUsernameStore } from "../../store/useUsernameStore";
 import {
   Container,
   Input,
-  SearchButton,
   SearchContainer,
   SecurityNotice,
   Subtitle,
-  Title,
+  Title
 } from "./styled.components";
 // import { useNavigate } from "react-router-dom";
+import { Search } from "lucide-react";
 import { useSearchUser } from "../../services/userDetails";
+import IconButton from "../icon-button/IconButton";
 import Loading from "../loading/Loading";
 
 export default function TikTokRecovery() {
@@ -56,7 +57,17 @@ export default function TikTokRecovery() {
               onChange={(e) => setLocalUsername(e.target.value)}
               onKeyDown={handleKeyDown}
             />
-            <SearchButton onClick={handleSearch}>Search</SearchButton>
+            <IconButton
+              icon={<Search size={16} />}
+              label="Search"
+              backgroundColor="#1E222B"
+              onClick={handleSearch}
+              styles={{
+                borderRadius: 8,
+                width: "25vw",
+                maxWidth: "133px",
+              }}
+            />
           </SearchContainer>
           <SecurityNotice>
             This service is secure and compliant with all applicable regulations

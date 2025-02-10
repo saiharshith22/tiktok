@@ -15,7 +15,6 @@ const Card = styled.div`
   max-width: 320px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-  width: 100%;
   min-height: 430px;
   display: flex;
   flex-direction: column;
@@ -27,16 +26,25 @@ const Card = styled.div`
 
 const VideoContainer = styled.div`
   position: relative;
-  aspect-ratio: 16/9;
+  aspect-ratio: 9 / 16;
   background: #000;
-  cursor: pointer;
   border-radius: 10px 10px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Video = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 10px 10px 0px 0px;
+`;
+
+const Iframe = styled.iframe`
+  width: 100%;
+  height: 100%;
+  border: none;
   border-radius: 10px 10px 0px 0px;
 `;
 
@@ -56,13 +64,8 @@ const PlayButton = styled.button<{ isPlaying: boolean }>`
   cursor: pointer;
   transition: opacity 0.2s;
   opacity: ${(props) => (props.isPlaying ? 0 : 1)};
-
   &:hover {
     background: white;
-  }
-
-  ${VideoContainer}:hover & {
-    opacity: 1;
   }
 `;
 
@@ -92,17 +95,15 @@ interface VideoCardProps {
   readonly timeAgo: string;
   readonly videoUrl: string;
   readonly toggleVideos: boolean;
-  // readonly thumbnailUrl: string;
 }
 
 export default function VideoCard({
   title = "Big Buck Bunny",
   views = "1.2M",
   timeAgo = "2 months ago",
-  videoUrl = "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+  videoUrl,
   toggleVideos = false,
-}: // thumbnailUrl = "https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
-VideoCardProps) {
+}: VideoCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -160,6 +161,19 @@ VideoCardProps) {
     setSelectedVideos(videoUrl);
   };
 
+  // Check if the video URL is from TikTok
+  const isTikTokVideo = (url: string) => url.includes("tiktok.com");
+
+  // Extract TikTok Video ID
+  const getTikTokVideoId = (url: string) => {
+    const match = url.match(/video\/(\d+)/);
+    return match ? match[1] : null;
+  };
+  console.log(
+    "video",
+    `https://www.tiktok.com/embed/${getTikTokVideoId(videoUrl)}`
+  );
+
   return (
     <Card onClick={() => handleSelect(videoUrl)}>
       <CustomCheckbox
@@ -167,26 +181,45 @@ VideoCardProps) {
         selectedCards={selectedVideos}
         toggleVideos={toggleVideos}
       />
-      <VideoContainer onClick={togglePlay}>
-        <Video
-          ref={videoRef}
-          // poster={thumbnailUrl}
-          onEnded={handleVideoEnd}
-          onError={handleVideoError}
-          playsInline
-          preload="metadata"
-        >
-          <source src={videoUrl} type="video/mp4" />
-          Your browser does not support the video tag.
-        </Video>
-        <PlayButton
-          isPlaying={isPlaying}
-          disabled={isLoading}
-          aria-label={isPlaying ? "Pause video" : "Play video"}
-        >
-          {isPlaying ? <Pause size={24} /> : <Play size={24} />}
-        </PlayButton>
-      </VideoContainer>
+
+      {isTikTokVideo(videoUrl) ? (
+        // Embed TikTok video using iframe
+        <VideoContainer>
+          <Iframe
+            src={`https://www.tiktok.com/embed/${getTikTokVideoId(videoUrl)}`}
+            allow="autoplay; encrypted-media"
+          />
+          <PlayButton
+            isPlaying={isPlaying}
+            disabled={isLoading}
+            aria-label={isPlaying ? "Pause video" : "Play video"}
+          >
+            {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+          </PlayButton>
+        </VideoContainer>
+      ) : (
+        // Regular MP4 Video Player
+        <VideoContainer onClick={togglePlay}>
+          <Video
+            ref={videoRef}
+            onEnded={handleVideoEnd}
+            onError={handleVideoError}
+            playsInline
+            preload="metadata"
+          >
+            <source src={videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </Video>
+          <PlayButton
+            isPlaying={isPlaying}
+            disabled={isLoading}
+            aria-label={isPlaying ? "Pause video" : "Play video"}
+          >
+            {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+          </PlayButton>
+        </VideoContainer>
+      )}
+
       <ContentInfo>
         <Title>{title}</Title>
         <MetaData>

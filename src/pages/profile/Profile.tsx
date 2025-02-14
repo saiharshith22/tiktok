@@ -4,6 +4,7 @@ import styled from "styled-components";
 import IconButton from "../../components/icon-button/IconButton";
 import ProfileCard from "../../components/profile-card/ProfileCard";
 import VideoHeader from "../../components/video-card/VideoHeader";
+import TikTokEmbed from "../../components/home-page/TikTokEmbed";
 // import { useUsernameStore } from "../../store/useUsernameStore";
 
 const Profile = () => {
@@ -107,16 +108,27 @@ const Profile = () => {
           //   videoUrl={video.video_url}
           //   toggleVideos={toggleRecoverVideos}
           // />
-          <div
-            style={{ display: "flex", justifyContent: "center" }}
+          // <div
+          //   style={{ display: "flex", justifyContent: "center" }}
+          //   key={video.video_url}
+          //   onClick={handleClick}
+          // >
+          //   <TikTokEmbed
+          //     url="https://www.tiktok.com/@epicgardening/video/7055411162212633903"
+          //     width={325}
+          //   />
+          // </div>
+          <button
+            className="card"
             key={video.video_url}
             onClick={handleClick}
+            tabIndex={0}
           >
-            {/* <TikTokEmbed
-              url="https://www.tiktok.com/@epicgardening/video/7055411162212633903"
-              width={325}
-            /> */}
-          </div>
+            <TikTokEmbed videoUrl={video.video_url} />
+            <div className="card-body">
+              <p>{video.desc}</p>
+            </div>
+          </button>
         ))}
       </VideoGrid>
       <IconButton

@@ -24,6 +24,7 @@ const HomePage = () => {
     <>
       <MainContent>
         <TikTokRecovery />
+        <br />
         <div className="card">
           <TikTokEmbed videoUrl={video.video_url} />
           <div className="card-body">

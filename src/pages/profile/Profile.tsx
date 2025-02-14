@@ -85,7 +85,14 @@ const Profile = () => {
     ],
     []
   );
-
+  const handleClick = (e: {
+    preventDefault: () => void;
+    stopPropagation: () => void;
+  }) => {
+    // Prevent any click on the container from triggering navigation
+    e.preventDefault();
+    e.stopPropagation();
+  };
   return (
     <div style={{ padding: "2rem" }} ref={divRef}>
       <ProfileCard />
@@ -103,6 +110,7 @@ const Profile = () => {
           <div
             style={{ display: "flex", justifyContent: "center" }}
             key={video.video_url}
+            onClick={handleClick}
           >
             <TikTokEmbed
               url="https://www.tiktok.com/@epicgardening/video/7055411162212633903"

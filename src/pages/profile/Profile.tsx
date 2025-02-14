@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from "react";
-import { TikTokEmbed } from "react-social-media-embed";
+// import { TikTokEmbed } from "react-social-media-embed";
 import styled from "styled-components";
 import IconButton from "../../components/icon-button/IconButton";
 import ProfileCard from "../../components/profile-card/ProfileCard";
@@ -112,10 +112,10 @@ const Profile = () => {
             key={video.video_url}
             onClick={handleClick}
           >
-            <TikTokEmbed
+            {/* <TikTokEmbed
               url="https://www.tiktok.com/@epicgardening/video/7055411162212633903"
               width={325}
-            />
+            /> */}
           </div>
         ))}
       </VideoGrid>

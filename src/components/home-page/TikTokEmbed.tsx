@@ -12,10 +12,23 @@ interface TikTokEmbedProps {
 
 const TikTokEmbed: React.FC<TikTokEmbedProps> = ({ videoUrl }) => {
   useEffect(() => {
-    // When the component mounts, the TikTok embed script should process the blockquote
-    if (window.tiktokEmbed) {
-      window.tiktokEmbed();
-    }
+    // Dynamically load the TikTok embed script
+    const script = document.createElement("script");
+    script.src = "https://www.tiktok.com/embed.js";
+    script.async = true;
+    script.onload = () => {
+      // Check if the function exists before calling it
+      if (typeof window.tiktokEmbed === "function") {
+        window.tiktokEmbed();
+      }
+    };
+
+    document.body.appendChild(script);
+
+    // Clean up the script when the component unmounts
+    return () => {
+      document.body.removeChild(script);
+    };
   }, [videoUrl]);
 
   // Extract video id using regex (adjust as needed)

@@ -1,10 +1,10 @@
+import { useRef, useState } from "react";
+import { TikTokEmbed } from "react-social-media-embed";
 import styled from "styled-components";
+import IconButton from "../../components/icon-button/IconButton";
 import ProfileCard from "../../components/profile-card/ProfileCard";
-import VideoCard from "../../components/video-card/VideoCard";
 import VideoHeader from "../../components/video-card/VideoHeader";
 import { useUsernameStore } from "../../store/useUsernameStore";
-import { useRef, useState } from "react";
-import IconButton from "../../components/icon-button/IconButton";
 
 const Profile = () => {
   const {
@@ -43,15 +43,24 @@ const Profile = () => {
       <ProfileCard />
       <VideoHeader />
       <VideoGrid>
-        {videos?.map((video, i) => (
-          <VideoCard
-            key={i}
-            title="Big Buck Bunny"
-            views="1.2M"
-            timeAgo="2 months ago"
-            videoUrl={video.video_url}
-            toggleVideos={toggleRecoverVideos}
-          />
+        {videos?.map((video) => (
+          // <VideoCard
+          //   key={i}
+          //   title="Big Buck Bunny"
+          //   views="1.2M"
+          //   timeAgo="2 months ago"
+          //   videoUrl={video.video_url}
+          //   toggleVideos={toggleRecoverVideos}
+          // />
+          <div
+            style={{ display: "flex", justifyContent: "center" }}
+            key={video.video_url}
+          >
+            <TikTokEmbed
+              url="https://www.tiktok.com/@epicgardening/video/7055411162212633903"
+              width={325}
+            />
+          </div>
         ))}
       </VideoGrid>
       <IconButton

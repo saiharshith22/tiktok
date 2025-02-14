@@ -16,3 +16,10 @@ body {
   font-family: "Inter";
   src: url("/fonts/Inter-Variable.ttf") format("truetype");
 }
+
+[data-testId="card-component"],
+[data-e2e="Player-index-LayerColorfulLogo"],
+[data-e2e="embed-swiper-index-RecommendationCardTitleContainer"],
+[data-e2e="embed-swiper-index-RecommendationCardContainer"] {
+  display: none !important;
+}

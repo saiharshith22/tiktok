@@ -120,6 +120,15 @@ const Profile = () => {
           // </div>
           <button
             className="card"
+            style={{
+              background: "none",
+              border: "none",
+              padding: 0,
+              cursor: "pointer",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
             key={video.video_url}
             onClick={handleClick}
             tabIndex={0}

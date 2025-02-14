@@ -4,6 +4,7 @@ export const Container = styled.div`
   padding: 40px;
   background-color: #f8f9fc;
   min-height: 100vh;
+  border: 2px solid red;
 `;
 export const TitleContainer = styled.div`
   margin-bottom: 40px;
@@ -427,7 +428,6 @@ export const TrustBadges = styled.div`
   gap: 16px;
   margin-bottom: 16px;
 `;
-
 
 export const TrustText = styled.p`
   color: #4b5363;

@@ -28,11 +28,29 @@ const awsconfig = {
 //   oauth: {
 //     domain: "us-east-1kryu9hmjq.auth.us-east-1.amazoncognito.com",
 //     scope: ["openid", "profile", "email"],
-//     redirectSignIn: "http://localhost:3000/secured",
-//     redirectSignOut: "http://localhost:3000",
+//     redirectSignIn: "http://localhost:3000/",
+//     redirectSignOut: "http://localhost:3000/",
 //     responseType: "code", // Use "code" for PKCE
 //     googleClientId:
 //       "433108609704-db81ls0o6m7ittfd5gj0cvald67uktku.apps.googleusercontent.com",
+//   },
+// };
+
+// const awsconfig = {
+//   aws_project_region: "us-east-1",
+//   aws_cognito_identity_pool_id:
+//     "us-east-1:6b8d24d4-a0c0-4f5d-9be3-d46102e8f26a",
+//   aws_cognito_region: "us-east-1",
+//   aws_user_pools_id: "us-east-1_tQrc0Zqju",
+//   aws_user_pools_web_client_id: "62nj24g9bpg0nere7g35bf5blr",
+//   oauth: {
+//     domain: "us-east-1tqrc0zqju.auth.us-east-1.amazoncognito.com",
+//     scope: ["openid", "profile", "email"],
+//     redirectSignIn: "http://localhost:3000/",
+//     redirectSignOut: "http://localhost:3000/",
+//     responseType: "code", // Use "code" for PKCE
+//     googleClientId:
+//       "308921932289-20n7laj11t16tjomhk655m6fki9um323.apps.googleusercontent.com",
 //   },
 // };
 

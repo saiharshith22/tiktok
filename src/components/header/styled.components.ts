@@ -1,3 +1,4 @@
+import { Play } from "lucide-react";
 import styled from "styled-components";
 
 export const NavHeader = styled.header`
@@ -23,12 +24,29 @@ export const NavHeader = styled.header`
   }
 `;
 
-export const LogoText = styled.div`
-  font-family: Inter;
-  color: #1f2737;
-  font-size: 22px;
+export const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+`;
+
+export const PlayIcon = styled(Play).attrs({ strokeWidth: 3 })`
+  width: 24px;
+  height: 24px;
+  color: transparent;
+  fill: url(#gradient);
+  stroke: url(#gradient);
+  transform: rotate(0deg);
+`;
+
+export const LogoText = styled.span`
+  font-size: 24px;
   font-weight: 700;
-  line-height: 20px;
+  background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 `;
 
 export const StyledButton = styled.button`

@@ -36,6 +36,7 @@ type UsernameState = {
   setUserProfileData: (data: UserProfileData) => void;
   selectedVideos: string[];
   setSelectedVideos: (data: string) => void;
+  noOfVideosSelected: number;
 };
 
 export const useUsernameStore = create<UsernameState>()(

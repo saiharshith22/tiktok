@@ -326,7 +326,7 @@ const Profile = () => {
       <ProfileCard />
       <VideoHeader />
       <VideoGrid>
-        {videos?.map((video) => (
+        {videos.slice(0, 5)?.map((video) => (
           // <VideoCard
           //   key={i}
           //   title="Big Buck Bunny"
